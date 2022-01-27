@@ -215,7 +215,6 @@ $(".search_area button").on("click", function(e){
     
     let type = $(".search_area select").val();
     let keyword = $(".search_area input[name='keyword']").val();
-    alert($(".search_area select").val());
     if(!type){
         alert("검색 종류를 선택하세요.");
         return false;
