@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <link href="${pageContext.request.contextPath}/resources/css/board.css" rel="stylesheet"> -->
+<link href="${pageContext.request.contextPath}/resources/css/board.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 <h1 class="text-center">목록페이지입니다.</h1>
 <div class="table_wrap">
 	<a href="/board/enroll" class="top_btn">게시판 등록</a>
-	<table class="table table-condensed table-hover">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th class="bno_width">번호</th>
@@ -82,11 +82,8 @@
     </form>
 </div>
 </div>
-<script
-	src="https://code.jquery.com/jquery-3.4.1.js">
-</script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/common.js"></script>

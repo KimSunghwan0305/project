@@ -1,5 +1,31 @@
 @charset "EUC-KR";
 
+  td, th{
+  	height: 40px;
+  }
+  td {
+  	padding-top: 40px;
+  }
+  th{
+  	font-size : 17px;
+  }
+  thead{
+  	font-weight: 700;
+  }
+  .bno_width{
+  	width: 12%;
+  }
+  .writer_width{
+  	width: 20%;
+  }
+  .regdate_width{
+  	width: 15%;
+  }
+  .updatedate_width{
+  	width: 15%;
+  }
+  
+/*
   a{
   	text-decoration : none;
   }
@@ -75,3 +101,4 @@
   .search_area select{
   	height: 35px;
   }
+*/
