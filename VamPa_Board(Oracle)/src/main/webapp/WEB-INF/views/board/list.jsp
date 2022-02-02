@@ -58,7 +58,7 @@
     </div>
 	<div class="pageInfo_wrap text-center" >
         <div class="pageInfo_area">
-        	<ul id="pageInfo" class="pageInfo list-inline">
+        	<ul id="pageInfo" class="pageInfo pagination">
         		<!-- 이전페이지 버튼 -->
                 <c:if test="${pageMaker.prev}">
                     <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
