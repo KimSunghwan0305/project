@@ -7,95 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="https://code.jquery.com/jquery-3.4.1.js"
-	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	crossorigin="anonymous">
-</script>
-<style>
-  a{
-  	text-decoration : none;
-  }
-  table{
- 	border-collapse: collapse;
- 	width: 1000px;    
- 	margin-top : 20px;
- 	text-align: center;
-  }
-  td, th{
-  	border : 1px solid black;
-  	height: 50px;
-  }
-  th{
-  	font-size : 17px;
-  }
-  thead{
-  	font-weight: 700;
-  }
-  .table_wrap{
-  	margin : 50px 0 0 50px;
-  }
-  .bno_width{
-  	width: 12%;
-  }
-  .writer_width{
-  	width: 20%;
-  }
-  .regdate_width{
-  	width: 15%;
-  }
-  .updatedate_width{
-  	width: 15%;
-  }
-  .top_btn{
-  	font-size: 20px;
-    padding: 6px 12px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    font-weight: 600;
-  }
-  .pageInfo{
-      list-style : none;
-      display: inline-block;
-    margin: 50px 0 0 100px;      
-  }
-  .pageInfo li{
-      float: left;
-    font-size: 20px;
-    margin-left: 18px;
-    padding: 7px;
-    font-weight: 500;
-  }
-  a:link {color:black; text-decoration: none;}
-  a:visited {color:black; text-decoration: none;}
-  a:hover {color:black; text-decoration: underline;}
-  .active{
-      background-color: #cdd5ec;
-  }
-  .search_area{
-    display: inline-block;
-    margin-top: 30px;
-    margin-left: 260px;
-  }
-  .search_area input{
-      height: 30px;
-    width: 250px;
-  }
-  .search_area button{
-     width: 100px;
-    height: 36px;
-  }
-  .search_area select{
-  	height: 35px;
-  }
-</style>
+<!-- <link href="${pageContext.request.contextPath}/resources/css/board.css" rel="stylesheet"> -->
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>목록페이지입니다.</h1>
 
 <div class="table_wrap">
 	<a href="/board/enroll" class="top_btn">게시판 등록</a>
-	<table>
+	<table class="table table-condensed table-hover">
 		<thead>
 			<tr>
 				<th class="bno_width">번호</th>
@@ -129,7 +52,7 @@
                 <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/>>제목 + 작성자</option>
                 <option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/>>제목 + 내용 + 작성자</option>
             </select> 
-            <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+            <input type="text" name="keyword" value="${pageMaker.cri.keyword }" onkeydown="if(event.keyCode==13){ searchCheck();}">
             <button>Search</button>
         </div>
     </div>
@@ -159,76 +82,13 @@
     </form>
 </div>
 
-<script>
-$(document).ready(function(){
-	
-	let result = '<c:out value="${result}"/>';
-	
-	checkAlert(result);
-	
-	function checkAlert(result){
-		
-		if(result === ''){
-			return;
-		}
-		
-		if(result === "enrol success"){
-			alert("등록이 완료되었습니다.");
-		}
-		
-        if(result === "modify success"){
-            alert("수정이 완료되었습니다.");
-        }
-        
-        if(result === "delete success"){
-            alert("삭제가 완료되었습니다.");
-        }
-		
-	}	
-	
-});
-
-let moveForm = $("#moveForm");
-
-$(".move").on("click", function(e){
-    e.preventDefault();
-    
-    moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
-    moveForm.attr("action", "/board/get");
-    moveForm.submit();
-});
-
-$(".pageInfo a").on("click", function(e){
-	 
-    e.preventDefault();
-    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-    moveForm.attr("action", "/board/list");
-    moveForm.submit();
-    
-});
-
-$(".search_area button").on("click", function(e){
-    e.preventDefault();
-    
-    let type = $(".search_area select").val();
-    let keyword = $(".search_area input[name='keyword']").val();
-    
-    if(!type){
-        alert("검색 종류를 선택하세요.");
-        return false;
-    }
-    
-    if(!keyword){
-        alert("키워드를 입력하세요.");
-        return false;
-    }        
-    
-    moveForm.find("input[name='type']").val(type);
-    moveForm.find("input[name='keyword']").val(keyword);
-    moveForm.find("input[name='pageNum']").val(1);
-    moveForm.submit();
-});
+<script
+	src="https://code.jquery.com/jquery-3.4.1.js">
 </script>
-
+<script src="${pageContext.request.contextPath}/resources/js/board.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/common.js"></script>
 </body>
 </html>

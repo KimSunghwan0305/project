@@ -29,6 +29,8 @@ public class BoardController {
     public void boardListGET(Model model, Criteria cri) {
 
         log.info("boardListGET");
+     //   System.out.println(cri);
+     //   log.info(cri.toString());
 
         model.addAttribute("list", bservice.getListPaging(cri));
 
